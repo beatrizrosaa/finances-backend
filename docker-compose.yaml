@@ -1,19 +1,21 @@
+version: '3.8'
+
 services:
+  
   backend:
-    build:
-      context: ./
-      dockerfile: Dockerfile
+    image: beatrizrosaa/backend-app:v1.0.0  
+    container_name: meu_backend
     environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DATABASE: finances
+      POSTGRES_PORT: 5432
+      POSTGRES_CREATE_DROP: update
       POSTGRES_HOST: database
-      POSTGRES_PORT: ${POSTGRES_PORT}
-      POSTGRES_DATABASE: ${POSTGRES_DATABASE}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_CREATE_DROP: ${POSTGRES_CREATE_DROP}
-      SECRET_KEY: ${SECRET_KEY}
-      JWT_EXPIRATION_TIME: ${JWT_EXPIRATION_TIME}
-      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS}
-      SWAGGER_ENABLED: ${SWAGGER_ENABLED}
+      SECRET_KEY: "uma_chave_secreta_qualquer"
+      JWT_EXPIRATION_TIME: 86400
+      CORS_ALLOWED_ORIGINS: "*"
+      SWAGGER_ENABLED: true
     ports:
       - "8080:8080"
     depends_on:
@@ -21,15 +23,27 @@ services:
 
   database:
     image: postgres:16.3
+    container_name: meu_banco
     restart: always
     environment:
-      POSTGRES_DB: ${POSTGRES_DATABASE}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: finances
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports:
-      - "${POSTGRES_PORT}:5432"
+      - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data2
+
+  frontend:
+    image: beatrizrosaa/frontend-app:v1.0.0 
+    container_name: meu_frontend
+    environment:
+
+      - REACT_APP_API_URL=http://localhost:8080  
+    ports:
+      - "4200:4200" 
+    depends_on:
+      - backend
 
 volumes:
   pgdata:
