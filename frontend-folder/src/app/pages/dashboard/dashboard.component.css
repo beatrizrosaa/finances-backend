@@ -1,0 +1,176 @@
+.alinhamento {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outer {
+  padding-bottom: 5dvw;
+  width: 100dvw;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.dashboard-header {
+  margin-top: 40px;
+}
+.search-bar {
+  margin-top: 20px;
+}
+
+thead {
+  background: #ffffff;
+}
+
+tr:nth-child(even) {
+  background: #f6f5ff;
+}
+
+tr:nth-child(odd) {
+  background: #ebeaff;
+}
+
+.button-color-edit {
+  border-radius: 7px;
+  border: none;
+}
+.button-color-edit mat-icon {
+  color: #ffc224;
+}
+
+.button-color-delete {
+  border-radius: 7px;
+  border: none;
+}
+.button-color-delete mat-icon {
+  color: #fa3737;
+}
+
+.button-color-view {
+  border-radius: 7px;
+  border: none;
+}
+.button-color-view mat-icon {
+  color: #7fb0d1;
+}
+
+.button-color-create {
+  border-radius: 7px;
+  border: none;
+}
+
+mat-card,
+.dashboard-header,
+.search-bar {
+  margin-right: auto;
+  margin-left: auto;
+  width: min(1000px, 90vw);
+  display: flex;
+}
+
+.table-actions-cell span {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.transaction-cell {
+  text-align: right;
+  padding-right: 4dvw;
+  max-width: 80px;
+  text-wrap: nowrap;
+}
+.currency-cell {
+  max-width: 10px;
+  padding-right: 0;
+  margin-right: 0;
+  visibility: visible;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow: visible;
+}
+
+th {
+  text-align: center;
+  font-weight: bold;
+  background-color: #f5f5f5;
+}
+
+th,
+.mat-cell {
+  padding: 8px;
+}
+
+.description-cell {
+  width: auto;
+  max-width: 40dvw;
+  overflow-wrap: break-word;
+}
+
+.create-item-icon,
+.create-item-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-item-button {
+  position: fixed;
+  bottom: 32px;
+  right: 48px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #0f0;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease-in-out, background-color 0.3s ease;
+  z-index: 999;
+}
+
+.create-item-icon {
+  font-size: 48px;
+}
+
+.create-item-button:hover {
+  background-color: #fff;
+  transform: scale(1.1);
+}
+.create-item-button:active {
+  transform: scale(0.95);
+}
+@media (max-width: 600px) {
+  .create-item-button {
+    bottom: 38px;
+    right: 28px;
+  }
+
+  .description-cell {
+    max-width: 26dvw;
+  }
+}
+
+@media (max-width: 432px) {
+  mat-card,
+  table {
+    width: 90dvw;
+    margin: auto;
+    padding: 0;
+  }
+
+  mat-icon,
+  .table-actions-cell {
+    margin: 0;
+    padding: 0;
+  }
+
+  .description-cell {
+    max-width: 23dvw;
+  }
+}
